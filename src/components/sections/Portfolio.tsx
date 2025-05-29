@@ -105,19 +105,66 @@ const Portfolio: React.FC = () => {
         
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filterCategories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveFilter(category.id)}
-              className={`px-4 py-2 rounded-md transition-all duration-300 ${
-                activeFilter === category.id
-                  ? 'bg-aura-yellow-400 text-aura-black'
-                  : 'bg-aura-yellow-400/10 text-aura-yellow-300 hover:bg-aura-yellow-400/20 hover:text-aura-yellow-200'
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
+          <button
+            onClick={() => setActiveFilter('all')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'all'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            All Work
+          </button>
+          <button
+            onClick={() => setActiveFilter('photography')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'photography'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Photography
+          </button>
+          <button
+            onClick={() => setActiveFilter('video')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'video'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Video
+          </button>
+          <button
+            onClick={() => setActiveFilter('podcast')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'podcast'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Podcast
+          </button>
+          <button
+            onClick={() => setActiveFilter('website')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'website'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Website
+          </button>
+          <button
+            onClick={() => setActiveFilter('wedding')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'wedding'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Wedding
+          </button>
         </div>
         
         {/* Portfolio Grid */}
