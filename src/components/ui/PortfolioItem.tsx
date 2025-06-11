@@ -40,10 +40,10 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ item, index }) => {
             <h3 className="text-xl font-medium text-aura-gray-100 mb-2">{item.title}</h3>
             <p className="text-aura-gray-300 mb-4">{item.description}</p>
             
-            <button className="flex items-center text-aura-gray-200 hover:text-aura-gray-100 transition-colors">
+            {/* <button className="flex items-center text-aura-gray-200 hover:text-aura-gray-100 transition-colors">
               <span className="mr-2">View Project</span>
               <ExternalLink size={16} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

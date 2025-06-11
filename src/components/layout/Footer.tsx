@@ -20,14 +20,11 @@ const Footer: React.FC = () => {
               Creating captivating digital experiences that elevate brands and engage audiences.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-aura-yellow-400 hover:text-aura-yellow-200 transition-colors">
+              <a href="https://www.instagram.com/the_aura_productions?utm_source=ig_web_button_share_sheet&igsh=MWJrNmlnY3R0azlvdw==" target="_blank" className="text-aura-yellow-400 hover:text-aura-yellow-200 transition-colors">
                 <Instagram size={20} />
               </a>
               <a href="#" className="text-aura-yellow-400 hover:text-aura-yellow-200 transition-colors">
                 <Facebook size={20} />
-              </a>
-              <a href="#" className="text-aura-yellow-400 hover:text-aura-yellow-200 transition-colors">
-                <Twitter size={20} />
               </a>
               <a href="#" className="text-aura-yellow-400 hover:text-aura-yellow-200 transition-colors">
                 <Linkedin size={20} />
@@ -63,17 +60,20 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-aura-yellow-200 font-display text-lg mb-4">Contact Us</h4>
             <ul className="space-y-3">
-              <li className="flex items-start">
+              {/* <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-0.5 flex-shrink-0 text-aura-yellow-300" />
                 <span className="text-aura-yellow-300">123 Creative St, Digital City, DC 10001</span>
-              </li>
-              <li className="flex items-center">
-                <Phone size={18} className="mr-2 flex-shrink-0 text-aura-yellow-300" />
-                <span className="text-aura-yellow-300">(555) 123-4567</span>
+              </li> */}
+              <li className="items-center">
+                <Phone size={18} className="mr-2  text-aura-yellow-300" />
+                <span className="text-aura-yellow-300">+91 9535858066</span>
+                <br>
+                </br>
+                <span className="text-aura-yellow-300">+91 8105267256</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 flex-shrink-0 text-aura-yellow-300" />
-                <span className="text-aura-yellow-300">info@auraproductions.com</span>
+                <span className="text-aura-yellow-300">theauraproductions1@gmail.com</span>
               </li>
             </ul>
           </div>

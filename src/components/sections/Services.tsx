@@ -1,51 +1,86 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Camera, Video, Edit, Image, Share2, Mic, Film, Heart } from 'lucide-react';
+import { ArrowRight, Camera, Video, Edit, Image, Share2, Mic, Film, Heart, Package, Headphones, PenTool, CreditCard, Image as ImageIcon, User, Globe, Smartphone, Layout, Users } from 'lucide-react';
+import ServiceCard from '../ui/ServiceCard';
 
 const services = [
   {
-    icon: <Camera className="w-8 h-8" />,
-    title: "Photography",
-    description: "Professional photography that captures the essence of your brand and products.",
+    icon: <Globe className="w-8 h-8" />,
+    title: "Website Designing",
+    description: "Create stunning, responsive websites that perfectly represent your brand and engage your audience.",
   },
   {
-    icon: <Video className="w-8 h-8" />,
-    title: "Videography",
-    description: "Cinematic video production that tells your story in a compelling way.",
+    icon: <Smartphone className="w-8 h-8" />,
+    title: "App Development",
+    description: "Build powerful mobile applications that deliver exceptional user experiences across all platforms.",
   },
   {
     icon: <Edit className="w-8 h-8" />,
     title: "Video Editing",
-    description: "Professional post-production to transform raw footage into captivating content.",
+    description: "Transform raw footage into compelling stories with professional editing and post-production.",
   },
   {
-    icon: <Image className="w-8 h-8" />,
-    title: "Photo Editing",
-    description: "Expert retouching and color grading to perfect your visual assets.",
+    icon: <Layout className="w-8 h-8" />,
+    title: "Posters and Brochures",
+    description: "Design eye-catching marketing materials that effectively communicate your message.",
   },
   {
     icon: <Share2 className="w-8 h-8" />,
     title: "Social Media",
-    description: "Strategic content creation and management to build your online presence.",
+    description: "Create and manage engaging social media content that builds your brand presence.",
   },
   {
-    icon: <Mic className="w-8 h-8" />,
-    title: "Podcast Production",
-    description: "End-to-end podcast production from recording to distribution.",
+    icon: <Camera className="w-8 h-8" />,
+    title: "Advertisement & Product Shoots",
+    description: "Professional photography that showcases your products in their best light.",
   },
   {
     icon: <Film className="w-8 h-8" />,
     title: "Ad & Reel Creation",
-    description: "Scroll-stopping ads and reels designed for engagement and conversion.",
+    description: "Create viral-worthy ads and reels that capture attention and drive engagement.",
   },
   {
     icon: <Heart className="w-8 h-8" />,
     title: "Wedding/Event Shoots",
-    description: "Capturing special moments with a blend of artistry and professionalism.",
+    description: "Capture your special moments with our professional photography and videography services.",
+  },
+];
+
+const additionalServices = [
+  {
+    icon: <Package className="w-8 h-8" />,
+    title: "Merchandise & Branding",
+    description: "Design custom merchandise and branding templates that make your brand stand out.",
+  },
+  {
+    icon: <Headphones className="w-8 h-8" />,
+    title: "Podcast Edits",
+    description: "Professional podcast editing and post-production to ensure crystal-clear audio quality.",
+  },
+  {
+    icon: <PenTool className="w-8 h-8" />,
+    title: "Logo Designing",
+    description: "Create unique and memorable logos that perfectly represent your brand identity.",
+  },
+  {
+    icon: <CreditCard className="w-8 h-8" />,
+    title: "ID Cards & Wrist Bands",
+    description: "Design professional ID cards and wristbands for events, organizations, and businesses.",
+  },
+  {
+    icon: <ImageIcon className="w-8 h-8" />,
+    title: "Thumbnails & Banners",
+    description: "Create eye-catching thumbnails and banners that drive engagement and clicks.",
+  },
+  {
+    icon: <Users className="w-8 h-8" />,
+    title: "Model Shoots",
+    description: "Professional model photography for fashion, commercial, and portfolio needs.",
   },
 ];
 
 const Services: React.FC = () => {
+  const [showMore, setShowMore] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -83,29 +118,55 @@ const Services: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <ServiceCard
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group bg-yellow-400/5 p-6 rounded-lg hover:bg-yellow-400/10 transition-all duration-300"
-            >
-              <div className="text-yellow-400 mb-4 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h3 className="text-xl font-medium text-yellow-100 mb-3">{service.title}</h3>
-              <p className="text-yellow-300 mb-4">{service.description}</p>
-              <a 
-                href="#" 
-                className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
-              >
-                Learn more
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </motion.div>
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              index={index}
+            />
           ))}
         </div>
+
+        {/* More Services Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-8"
+        >
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="inline-flex items-center bg-yellow-400/10 text-yellow-400 font-medium py-3 px-8 rounded-lg hover:bg-yellow-400/20 transition-colors"
+          >
+            {showMore ? 'Show Less' : 'More Services'}
+            <ArrowRight className={`ml-2 w-5 h-5 transition-transform ${showMore ? 'rotate-90' : ''}`} />
+          </button>
+        </motion.div>
+
+        {/* Additional Services */}
+        {showMore && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mt-8"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {additionalServices.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  index={index}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

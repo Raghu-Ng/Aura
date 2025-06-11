@@ -13,45 +13,57 @@ const Portfolio: React.FC = () => {
   const portfolioItems = [
     {
       id: 1,
-      title: 'Coastal Elegance',
-      category: 'photography',
-      image: 'https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      description: 'Commercial photography for luxury resort brand'
+      title: 'Pixels & Prestige',
+      category: 'website',
+      // image: '/src/components/video/portfolio/website.png',
+      image: '/images/website.png',
+      // image: 'https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      description: 'Crafting elite web experiences with visuals that whisper luxury and code that commands attention — our lens captured the soul of a 5-star resort and transformed it into a scroll-worthy digital masterpiece.'
     },
     {
       id: 2,
-      title: 'Urban Stories',
-      category: 'video',
-      image: 'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      description: 'Documentary-style video series for city tourism'
+      title: 'Shaping Digital Presence',
+      category: 'Socials',
+      // image: '/src/components/video/portfolio/Soc.png',
+      image: '/images/Soc.png',
+      // image: 'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      description: 'We build meaningful brand voices across platforms—curating content, managing engagement, and crafting a consistent narrative that connects with your audience.Documentary-style video series for city tourism'
     },
     {
       id: 3,
-      title: 'Mindful Moments',
-      category: 'podcast',
-      image: 'https://images.pexels.com/photos/3756772/pexels-photo-3756772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      description: 'Wellness podcast production and branding'
+      title: 'Flow in Every Frame',
+      category: 'video',
+      image: '/images/videoedit.png',
+      // image: '/src/components/video/portfolio/videoedit.png',
+      // image: 'https://images.pexels.com/photos/3756772/pexels-photo-3756772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      description: 'We shape raw footage into powerful stories—cutting with intention, blending with rhythm, and delivering edits that engage, evoke, and elevate.'
     },
     {
       id: 4,
-      title: 'E-Commerce',
-      category: 'website',
-      image: 'https://img.freepik.com/free-photo/laptop-shopping-bags-online-shopping-concept_1423-190.jpg?ga=GA1.1.1079821049.1748499116&semt=ais_items_boosted&w=740',
-      description: 'E-commerce website for handcrafted goods'
+      title: 'Lens Meets Detail',
+      category: 'Shooting',
+      // image: '/src/components/video/portfolio/prodsuct.png',
+      image: '/images/prodsuct.png',
+      // image: 'https://img.freepik.com/free-photo/laptop-shopping-bags-online-shopping-concept_1423-190.jpg?ga=GA1.1.1079821049.1748499116&semt=ais_items_boosted&w=740',
+      description: 'From concept to composition, we capture every product with precision and purpose—turning everyday items into brand statements through thoughtful visuals'
     },
     {
       id: 5,
       title: 'Forever Moments',
       category: 'wedding',
-      image: 'https://images.pexels.com/photos/1730877/pexels-photo-1730877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      description: 'Destination wedding photography and videography'
+      image: '/images/wed.png',
+      // image: '/src/components/video/portfolio/wedding.png',
+      // image: 'https://images.pexels.com/photos/1730877/pexels-photo-1730877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      description: 'We don’t just capture events—we preserve emotions. From candid glances to grand moments, our lens tells stories that time can never fade.'
     },
     {
       id: 6,
-      title: 'Tech Innovations',
-      category: 'photography',
-      image: 'https://img.freepik.com/free-photo/3d-rendering-camera-with-film-roll_23-2150985330.jpg?ga=GA1.1.1079821049.1748499116&semt=ais_items_boosted&w=740',
-      description: 'Product photography for tech startup'
+      title: 'Wear Your Identity',
+      category: 'Branding',
+      // image: '/src/components/video/portfolio/bRAND.png',
+      image: '/images/Brand.png',
+      // image: 'https://img.freepik.com/free-photo/3d-rendering-camera-with-film-roll_23-2150985330.jpg?ga=GA1.1.1079821049.1748499116&semt=ais_items_boosted&w=740',
+      description: 'We create merchandise that embodies your brand’s essence—turning logos and ideas into tangible expressions that your audience proudly carries.'
     }
   ];
   
@@ -61,10 +73,11 @@ const Portfolio: React.FC = () => {
   
   const filterCategories = [
     { id: 'all', label: 'All Work' },
-    { id: 'photography', label: 'Photography' },
-    { id: 'video', label: 'Video' },
-    { id: 'podcast', label: 'Podcast' },
     { id: 'website', label: 'Website' },
+    { id: 'video', label: 'Video' },
+    { id: 'Shooting', label: 'Shooting' },
+    { id: 'Branding', label: 'Branding' },
+    { id: 'Socials', label: 'Socials' },
     { id: 'wedding', label: 'Wedding' }
   ];
   
@@ -116,36 +129,6 @@ const Portfolio: React.FC = () => {
             All Work
           </button>
           <button
-            onClick={() => setActiveFilter('photography')}
-            className={`px-6 py-2 rounded-full transition-all duration-300 ${
-              activeFilter === 'photography'
-                ? 'bg-yellow-400 text-black'
-                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
-            }`}
-          >
-            Photography
-          </button>
-          <button
-            onClick={() => setActiveFilter('video')}
-            className={`px-6 py-2 rounded-full transition-all duration-300 ${
-              activeFilter === 'video'
-                ? 'bg-yellow-400 text-black'
-                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
-            }`}
-          >
-            Video
-          </button>
-          <button
-            onClick={() => setActiveFilter('podcast')}
-            className={`px-6 py-2 rounded-full transition-all duration-300 ${
-              activeFilter === 'podcast'
-                ? 'bg-yellow-400 text-black'
-                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
-            }`}
-          >
-            Podcast
-          </button>
-          <button
             onClick={() => setActiveFilter('website')}
             className={`px-6 py-2 rounded-full transition-all duration-300 ${
               activeFilter === 'website'
@@ -154,6 +137,36 @@ const Portfolio: React.FC = () => {
             }`}
           >
             Website
+          </button>
+          <button
+            onClick={() => setActiveFilter('video')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'Video'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Video
+          </button>
+          <button
+            onClick={() => setActiveFilter('Shooting')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'Shooting'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Shooting
+          </button>
+          <button
+            onClick={() => setActiveFilter('Branding')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 ${
+              activeFilter === 'Branding'
+                ? 'bg-yellow-400 text-black'
+                : 'bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400/20 hover:scale-105'
+            }`}
+          >
+            Branding
           </button>
           <button
             onClick={() => setActiveFilter('wedding')}

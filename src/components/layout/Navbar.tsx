@@ -43,22 +43,22 @@ const Navbar: React.FC = () => {
         />
         
         <div className="container mx-auto px-4 md:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex flex-wrap min-w-0 items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a href="#home" className="flex items-center space-x-2">
+            <a href="#home" className="flex items-center space-x-2 min-w-0">
               <Camera className="w-6 h-6 md:w-7 md:h-7 text-yellow-400" />
-              <span className="font-display text-lg md:text-xl text-yellow-100">
+              <span className="font-display text-lg md:text-xl text-yellow-100 truncate">
                 The AuRa Productions
               </span>
             </a>
             
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-6 lg:space-x-8">
+            <nav className="hidden md:flex space-x-4 lg:space-x-8 min-w-0">
               {navLinks.map((link, index) => (
                 <a 
                   key={index}
                   href={link.href}
-                  className="text-yellow-300 hover:text-yellow-100 transition-colors duration-300 font-medium"
+                  className="text-yellow-300 hover:text-yellow-100 transition-colors duration-300 font-medium truncate"
                 >
                   {link.title}
                 </a>
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
             </nav>
             
             {/* Contact Button (Desktop) */}
-            <div className="hidden md:block">
+            <div className="hidden md:block ml-2 flex-shrink-0">
               <a 
                 href="#contact" 
                 className="btn btn-outline"

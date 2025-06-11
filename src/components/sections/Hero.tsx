@@ -4,9 +4,15 @@ import CameraModel from '../3d/CameraModel';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onVideoReady?: () => void;
+  onVideoProgress?: (percent: number) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onVideoReady, onVideoProgress }) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   useEffect(() => {
     if (titleRef.current) {
@@ -41,8 +47,54 @@ const Hero: React.FC = () => {
     });
   }, []);
   
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Progress handler
+    const handleProgress = () => {
+      if (!onVideoProgress) return;
+      try {
+        const buffered = video.buffered;
+        const duration = video.duration;
+        if (duration > 0 && buffered.length > 0) {
+          const end = buffered.end(buffered.length - 1);
+          const percent = Math.min(100, Math.round((end / duration) * 100));
+          onVideoProgress(percent);
+        }
+      } catch {}
+    };
+    // Ready handler
+    const handleCanPlay = () => {
+      if (onVideoProgress) onVideoProgress(100);
+      if (onVideoReady) onVideoReady();
+    };
+    video.addEventListener('progress', handleProgress);
+    video.addEventListener('canplaythrough', handleCanPlay, { once: true });
+    // Fallback: update progress on timeupdate (for some browsers)
+    video.addEventListener('timeupdate', handleProgress);
+    return () => {
+      video.removeEventListener('progress', handleProgress);
+      video.removeEventListener('canplaythrough', handleCanPlay);
+      video.removeEventListener('timeupdate', handleProgress);
+    };
+  }, [onVideoReady, onVideoProgress]);
+  
   return (
     <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover opacity-50"
+      >
+        {/* <source src="/videos/387639380880584713.mp4" type="video/mp4" /> */}
+        <source src="/src/components/video/387639380880584713.mp4" type="video/mp4" />
+      </video>
+
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-yellow-400/5" />
@@ -69,7 +121,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-yellow-300 mb-8 max-w-3xl mx-auto"
           >
-            Capturing moments, creating memories, and crafting visual stories that last forever.
+            If your brand were a movie, we will make it a blockbuster.
           </motion.p>
           
           <motion.div

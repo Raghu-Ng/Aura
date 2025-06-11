@@ -1,42 +1,110 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TestimonialCard from '../ui/TestimonialCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const clientLogos = [
+  {
+    name: 'Invntree',
+    logo: 'https://www.invntree.com/wp-content/uploads/2023/03/cropped-invntree-logo.png',
+  },
+  {
+    name: 'Canman',
+    logo: 'https://canman.co/wp-content/uploads/2019/10/cropped-logo-2.png',
+  },
+  {
+    name: 'White Black Border',
+    logo: '/images/white black-border.png',
+  },
+  // First set of duplicates
+  {
+    name: 'Invntree',
+    logo: 'https://www.invntree.com/wp-content/uploads/2023/03/cropped-invntree-logo.png',
+  },
+  {
+    name: 'Canman',
+    logo: 'https://canman.co/wp-content/uploads/2019/10/cropped-logo-2.png',
+  },
+  {
+    name: 'White Black Border',
+    logo: '/images/white black-border.png',
+  },
+  // Second set of duplicates
+  {
+    name: 'Invntree',
+    logo: 'https://www.invntree.com/wp-content/uploads/2023/03/cropped-invntree-logo.png',
+  },
+  {
+    name: 'Canman',
+    logo: 'https://canman.co/wp-content/uploads/2019/10/cropped-logo-2.png',
+  },
+  {
+    name: 'White Black Border',
+    logo: '/images/white black-border.png',
+  },
+  // Third set of duplicates
+  {
+    name: 'Invntree',
+    logo: 'https://www.invntree.com/wp-content/uploads/2023/03/cropped-invntree-logo.png',
+  },
+  {
+    name: 'Canman',
+    logo: 'https://canman.co/wp-content/uploads/2019/10/cropped-logo-2.png',
+  },
+  {
+    name: 'White Black Border',
+    logo: '/images/white black-border.png',
+  },
+  // Fourth set of duplicates
+  {
+    name: 'Invntree',
+    logo: 'https://www.invntree.com/wp-content/uploads/2023/03/cropped-invntree-logo.png',
+  },
+  {
+    name: 'Canman',
+    logo: 'https://canman.co/wp-content/uploads/2019/10/cropped-logo-2.png',
+  },
+  {
+    name: 'White Black Border',
+    logo: '/images/white black-border.png',
+  },
+];
 
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      company: 'Coastal Retreat Resort',
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      quote: 'The photography and video work AuRa Productions created for our resort captured the essence of our brand perfectly. Their team was professional, creative, and delivered beyond our expectations.',
+      name: 'Kartik Puttaiah',
+      company: 'Founder,\nCanman',
+      image: '/images/karthik.jpg',
+      quote: 'The Aura Productions was seamless.They truly understood Canman’s vision and delivered an ad that speaks to our audience.Looking forward to more collaborations!',
     },
     {
       id: 2,
-      name: 'Michael Chen',
-      company: 'Innovate Tech',
-      image: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      quote: 'Working with AuRa on our product photography elevated our brand to a new level. Their attention to detail and understanding of our vision resulted in images that truly showcase our products.',
+      name: 'Akash Kengua',
+      company: 'Marketing Lead,\nInvntree',
+      image: '/images/akash.jpg',
+      quote: 'The AURA Productions team did a great job editing our podcast videos—clean, professional, and exactly what we needed. They were super easy to work with and delivered everything seamlessly.',
     },
     {
       id: 3,
-      name: 'Emma Rodriguez',
-      company: 'Mindful Living Podcast',
-      image: 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      quote: 'AuRa Productions transformed our podcast from amateur to professional. Their production quality, branding, and strategy have helped us grow our listener base by 200% in just three months.',
+      name: 'Guru Raj',
+      company: 'Founder,\nDance Beatz Studio',
+      image: '/images/gururaj.png',
+      quote: 'The AURA Productions team, led by Raghava, did a fantastic job on our complete branding—from posters and flyers to banners and business cards. Their creativity and attention to detail truly stood out. Excited for more collaborations ahead!',
     },
     {
       id: 4,
-      name: 'David Thompson',
-      company: 'Artisan Collective',
-      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      quote: 'The website AuRa designed for our collective perfectly balances aesthetics and functionality. Our online sales have increased dramatically since the launch.',
+      name: 'Arjun Vibe',
+      company: 'founder,\nArtisan Collective',
+      image: 'https://images.pexels.com/photos/14564834/pexels-photo-14564834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      quote: 'The website AuRa designed for our collective perfectly balances aesthetics and functionality. Our online sales have increased since the launch.',
     },
   ];
   
   const sliderRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const logoScrollRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   
   const scrollLeft = () => {
@@ -50,6 +118,20 @@ const Testimonials: React.FC = () => {
       sliderRef.current.scrollBy({ left: 330, behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    const scrollLogos = () => {
+      if (logoScrollRef.current) {
+        logoScrollRef.current.scrollLeft += 1;
+        if (logoScrollRef.current.scrollLeft >= logoScrollRef.current.scrollWidth / 2) {
+          logoScrollRef.current.scrollLeft = 0;
+        }
+      }
+    };
+
+    const interval = setInterval(scrollLogos, 30);
+    return () => clearInterval(interval);
+  }, []);
   
   return (
     <section id="testimonials" ref={sectionRef} className="section-padding bg-black">
@@ -119,6 +201,40 @@ const Testimonials: React.FC = () => {
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
+          </div>
+        </div>
+
+        {/* Client Logos Section */}
+        <div className="mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-xl text-aura-yellow-300">Trusted by Industry Leaders</h3>
+          </motion.div>
+
+          <div 
+            ref={logoScrollRef}
+            className="flex overflow-hidden relative"
+            style={{ scrollbarWidth: 'none' }}
+          >
+            <div className="flex animate-scroll">
+              {clientLogos.map((client, index) => (
+                <div
+                  key={`${client.name}-${index}`}
+                  className="flex-shrink-0 px-8 mx-4"
+                >
+                  <img
+                    src={client.logo}
+                    alt={`${client.name} logo`}
+                    className="h-12 object-contain filter brightness-0 saturate-100 invert sepia-100 hue-rotate-[320deg] opacity-70 hover:opacity-100 transition-opacity"
+                    style={{ filter: 'brightness(0) saturate(100%) invert(77%) sepia(29%) saturate(1032%) hue-rotate(359deg) brightness(103%) contrast(107%)' }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
