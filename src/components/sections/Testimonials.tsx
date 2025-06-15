@@ -72,13 +72,13 @@ const clientLogos = [
 
 const Testimonials: React.FC = () => {
   const testimonials = [
-    {
-      id: 1,
-      name: 'Kartik Puttaiah',
-      company: 'Founder,\nCanman',
-      image: '/images/karthik.jpg',
-      quote: 'The Aura Productions was seamless.They truly understood Canman’s vision and delivered an ad that speaks to our audience.Looking forward to more collaborations!',
-    },
+    // {
+    //   id: 1,
+    //   name: 'Kartik Puttaiah',
+    //   company: 'Founder,\nCanman',
+    //   image: '/images/karthik.jpg',
+    //   quote: 'The Aura Productions was seamless.They truly understood Canman’s vision and delivered an ad that speaks to our audience.Looking forward to more collaborations!',
+    // },
     {
       id: 2,
       name: 'Akash Kengua',
@@ -205,7 +205,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* Client Logos Section */}
-        <div className="mt-20">
+        {/* <div className="mt-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -236,7 +236,7 @@ const Testimonials: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

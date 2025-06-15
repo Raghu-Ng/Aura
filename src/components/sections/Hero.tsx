@@ -91,8 +91,8 @@ const Hero: React.FC<HeroProps> = ({ onVideoReady, onVideoProgress }) => {
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover opacity-50"
       >
-        {/* <source src="/videos/387639380880584713.mp4" type="video/mp4" /> */}
-        <source src="/src/components/video/387639380880584713.mp4" type="video/mp4" />
+        <source src="/videos/387639380880584713.mp4" type="video/mp4" />
+        {/* <source src="/src/components/video/387639380880584713.mp4" type="video/mp4" /> */}
       </video>
 
       {/* Background Elements */}
